@@ -12,6 +12,7 @@ The SDK is spread across multiple platform-specific repositories. Below are the 
 
 ## Documentation
 
+- [documentation/api_errors.md](./documentation/api_errors.md) - API errors documentation
 - [documentation/how_to_validate_request_xml.md](./documentation/how_to_validate_request_xml.md) - HOWTO to validate request XML against XSD schema
 
 ### OJP 2.0

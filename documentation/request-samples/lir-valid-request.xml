@@ -1,0 +1,20 @@
+<OJP xmlns:siri="http://www.siri.org.uk/siri" version="2.0"
+  xmlns="http://www.vdv.de/ojp"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <OJPRequest>
+    <siri:ServiceRequest>
+      <siri:RequestTimestamp>2024-03-14T17:35:16Z</siri:RequestTimestamp>
+      <siri:RequestorRef>OJP_Demo_iOS_0.9.1</siri:RequestorRef>
+      <OJPLocationInformationRequest>
+        <siri:RequestTimestamp>2024-03-14T17:35:16Z</siri:RequestTimestamp>
+        <InitialInput>
+          <Name>Bern</Name>
+        </InitialInput>
+        <Restrictions>
+          <Type>stop</Type>
+          <NumberOfResults>10</NumberOfResults>
+        </Restrictions>
+      </OJPLocationInformationRequest>
+    </siri:ServiceRequest>
+  </OJPRequest>
+</OJP>

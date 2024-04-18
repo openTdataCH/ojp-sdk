@@ -15,7 +15,7 @@ The SDK is spread across multiple platform-specific repositories. Below are the 
 ### OJP 2.0
 - [https://opentransportdata.swiss/de/cookbook/ojp2entwicklung/](https://opentransportdata.swiss/de/cookbook/ojp2entwicklung/) - OJP 2.0 cookbook
 - [https://github.com/VDVde/OJP/tree/develop](https://github.com/VDVde/OJP/tree/develop) - OJP 2.0 XSD schema from `develop` branch
-- [https://vdvde.github.io/OJP/develop/index.html]() - 
+- [https://vdvde.github.io/OJP/develop/index.html](https://vdvde.github.io/OJP/develop/index.html) - 
 documentation generated from `develop` branch
 
 ### OJP 1.0

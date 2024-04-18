@@ -12,6 +12,8 @@ The SDK is spread across multiple platform-specific repositories. Below are the 
 
 ## Documentation
 
+- [documentation/how_to_validate_request_xml.md](./documentation/how_to_validate_request_xml.md) - HOWTO to validate request XML against XSD schema
+
 ### OJP 2.0
 - [https://opentransportdata.swiss/de/cookbook/ojp2entwicklung/](https://opentransportdata.swiss/de/cookbook/ojp2entwicklung/) - OJP 2.0 cookbook
 - [https://github.com/VDVde/OJP/tree/develop](https://github.com/VDVde/OJP/tree/develop) - OJP 2.0 XSD schema from `develop` branch

@@ -8,7 +8,7 @@ Check [./request-samples](./request-samples/) for request XMLs used.
 
 Example: [./request-samples/lir-valid-request.xml](./request-samples/lir-valid-request.xml)
 
-```
+``` xml
 <OJP xmlns:siri="http://www.siri.org.uk/siri" version="2.0"
   xmlns="http://www.vdv.de/ojp"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -37,9 +37,10 @@ Example: [./request-samples/lir-valid-request.xml](./request-samples/lir-valid-r
 
 #### 1.1 Invalid Authorization
 
-```
-$ curl -X POST https://api.opentransportdata.swiss/ojp20 \
-- H 'Authorization: Bearer invalid_token'
+``` sh
+curl -X POST https://api.opentransportdata.swiss/ojp20 \
+  -H 'Authorization: Bearer invalid_token' \
+  -H 'Content-Type: application/xml'
 ```
 
 Response
@@ -61,11 +62,11 @@ Strict-Transport-Security: max-age=21600000
 
 #### 1.2 Invalid Endpoint
 
-```
+```sh
 $ curl -X POST https://api.opentransportdata.swiss/ojp20-foo \
-- H 'Authorization: Bearer ey...'
+  -H 'Authorization: Bearer ey...'
 
-or 
+# or 
 
 $ curl -X GET https://api.opentransportdata.swiss/ojp20-foo
 ```
@@ -99,20 +100,23 @@ Strict-Transport-Security: max-age=21600000
 
 **TODO** - check if we can get a XML response instead
 
+-> last info: response bodys for errors from the API Gateway (tyk.io) will always be returned as JSON. We can rely on HTTP Status codes for handling, as OJP domain errors will be returned as HTTP Status Code `200`
+
 ### 2. OJP Domain specific errors
 
 #### 2.1 Invalid Requext XML
 
 [./request-samples/lir-invalid-xml.xml](./request-samples/lir-invalid-xml.xml)
 
-```
+``` sh
 $ curl -X GET https://api.opentransportdata.swiss/ojp20 \
--d @documentation/request-samples/lir-invalid-xml.xml
+  -d @documentation/request-samples/lir-invalid-xml.xml \
+  -H 'Content-Type: application/xml'
 ```
 
 Response
 
-```
+``` json
 {
     "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
     "title": "One or more validation errors occurred.",
@@ -140,14 +144,15 @@ Following XML doesnt contain `<Restrictions>` node, which is optional according 
 
 [./request-samples/lir-error-no-restriction.xml](./request-samples/lir-error-no-restriction.xml)
 
-```
+``` sh
 $ curl -X GET https://api.opentransportdata.swiss/ojp20 \
--d @documentation/request-samples/lir-error-no-restriction.xml
+  -d @documentation/request-samples/lir-error-no-restriction.xml \
+  -H 'Content-Type: application/xml'
 ```
 
 Response
 
-```
+``` json
 {
     "traceId": "6883eadb-d859-4122-9575-b7ba6aadd3ce",
     "error": "Object reference not set to an instance of an object.",

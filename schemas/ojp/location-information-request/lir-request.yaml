@@ -1,6 +1,7 @@
 $id: "https://opentransportdata.swiss/schemas/ojp.json"
 $schema: "http://json-schema.org/draft-07/schema#"
 title: OJP LocationInformationRequest Request
+reference: https://opentransportdata.swiss/de/cookbook/ojp2entwicklung/
 type: object
 properties:
   ojp:

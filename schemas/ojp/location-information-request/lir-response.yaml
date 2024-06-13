@@ -40,18 +40,75 @@ properties:
                     type: string
                   calcTime:
                     type: integer
+                  placeResults:
+                    type: array
+                    placeResults:
+                      type: object
+                      xmlName: PlaceResult
+                      properties:
+                        place:
+                          type: object
+                          properties:
+                            stopPlace:
+                              type: object
+                              properties:
+                                stopPlaceRef:
+                                  type: string
+                                stopPlaceName:
+                                  $ref: "../_shared/international-text.yaml"
+                                privateCode:
+                                  type: object
+                                  properties:
+                                    system:
+                                      type: string
+                                    value:
+                                      type: string
+                                  required:
+                                    - system
+                                    - value
+                                topographicPlaceRef:
+                                  type: string
+                              required:
+                                - stopPlaceRef
+                                - stopPlaceName
+                            # stopPlace
 
+                            name:
+                              $ref: "../_shared/international-text.yaml"
+                            
+                            geoPosition:
+                              $ref: "../_shared/lnglat.yaml"
+                          
+                          required:
+                            - stopPlace
+                            - name
+                            - geoPosition
+                        # place
+
+                        complete:
+                          type: boolean
+                        probability:
+                          type: number
+                      
+                      required:
+                        - place
+                        - complete
+                  # placeResults
+                
                 required:
                   - responseTimestamp
+                  - placeResults
               # locationInformationDelivery
 
             required:
               - responseTimestamp
               - locationInformationDelivery
           # serviceRequest
+        
         required:
           - serviceDelivery
       # request
+    
     required:
       - response
   # ojp

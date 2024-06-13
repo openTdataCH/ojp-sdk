@@ -1,0 +1,10 @@
+$id: "https://opentransportdata.swiss/schemas/ojp.json"
+$schema: "http://json-schema.org/draft-07/schema#"
+title: InternationalTextStructure
+xsd: https://vdvde.github.io/OJP/develop/index.html#InternationalTextStructure
+type: object
+properties:
+  text:
+    type: string
+required:
+  - text

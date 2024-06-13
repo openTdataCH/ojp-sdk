@@ -64,7 +64,7 @@ properties:
                   restrictions:
                     type: object
                     properties:
-                      # use 'types' otherwise we cant use 'type' whis is reserved
+                      # use 'types' otherwise we cant use 'type:' which is reserved
                       types:
                         xmlName: Type
                         type: array

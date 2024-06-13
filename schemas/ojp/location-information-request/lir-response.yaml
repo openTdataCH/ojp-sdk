@@ -1,0 +1,59 @@
+$id: "https://opentransportdata.swiss/schemas/ojp.json"
+$schema: "http://json-schema.org/draft-07/schema#"
+title: OJP LocationInformationRequest Response
+reference: https://opentransportdata.swiss/de/cookbook/ojp2entwicklung/
+type: object
+properties:
+  ojp:
+    xmlName: OJP
+    type: object
+    properties:
+      request:
+        xmlName: OJPResponse
+        type: object
+        properties:
+          serviceDelivery:
+            namespace: http://www.siri.org.uk/siri
+            type: object
+            properties:
+              responseTimestamp:
+                namespace: http://www.siri.org.uk/siri
+                type: string
+                format: date-time
+              producerRef:
+                namespace: http://www.siri.org.uk/siri
+                type: string
+              
+              locationInformationDelivery:
+                xmlName: OJPLocationInformationDelivery
+                type: object
+                properties:
+                  responseTimestamp:
+                    namespace: http://www.siri.org.uk/siri
+                    type: string
+                    format: date-time
+                  requestMessageRef:
+                    namespace: http://www.siri.org.uk/siri
+                    type: string
+                  defaultLanguage:
+                    namespace: http://www.siri.org.uk/siri
+                    type: string
+                  calcTime:
+                    type: integer
+
+                required:
+                  - responseTimestamp
+              # locationInformationDelivery
+
+            required:
+              - responseTimestamp
+              - locationInformationDelivery
+          # serviceRequest
+        required:
+          - serviceDelivery
+      # request
+    required:
+      - response
+  # ojp
+required:
+  - ojp

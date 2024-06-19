@@ -1,0 +1,143 @@
+$id: "https://opentransportdata.swiss/schemas/ojp.json"
+$schema: "http://json-schema.org/draft-07/schema#"
+title: OJP LocationInformationRequest Response
+reference: https://opentransportdata.swiss/de/cookbook/ojp2entwicklung/
+type: object
+properties:
+  ojp:
+    xmlName: OJP
+    type: object
+    properties:
+      request:
+        xmlName: OJPResponse
+        type: object
+        properties:
+          serviceDelivery:
+            namespace: http://www.siri.org.uk/siri
+            type: object
+            properties:
+              responseTimestamp:
+                namespace: http://www.siri.org.uk/siri
+                type: string
+                format: date-time
+              producerRef:
+                namespace: http://www.siri.org.uk/siri
+                type: string
+              
+              locationInformationDelivery:
+                xmlName: OJPLocationInformationDelivery
+                type: object
+                properties:
+                  responseTimestamp:
+                    namespace: http://www.siri.org.uk/siri
+                    type: string
+                    format: date-time
+                  requestMessageRef:
+                    namespace: http://www.siri.org.uk/siri
+                    type: string
+                  defaultLanguage:
+                    namespace: http://www.siri.org.uk/siri
+                    type: string
+                  calcTime:
+                    type: integer
+                  placeResults:
+                    type: array
+                    placeResults:
+                      type: object
+                      xmlName: PlaceResult
+                      properties:
+                        place:
+                          type: object
+                          properties:
+                            stopPlace:
+                              type: object
+                              properties:
+                                stopPlaceRef:
+                                  type: string
+                                stopPlaceName:
+                                  $ref: "../_shared/international-text.yaml"
+                                privateCode:
+                                  type: object
+                                  properties:
+                                    system:
+                                      type: string
+                                    value:
+                                      type: string
+                                  required:
+                                    - system
+                                    - value
+                                topographicPlaceRef:
+                                  type: string
+                              required:
+                                - stopPlaceRef
+                                - stopPlaceName
+                            # stopPlace
+                            
+                            address:
+                              type: object
+                              properties:
+                                publicCode:
+                                  type: string
+                                name:
+                                  $ref: "../_shared/international-text.yaml"
+                                postCode:
+                                  type: string
+                                topographicPlaceName:
+                                  type: string
+                                topographicPlaceRef:
+                                  type: string
+                                street:
+                                  type: string
+                                houseNumber:
+                                  type: string
+                              required:
+                                - publicCode
+                                - name
+                            # address
+                            
+                            name:
+                              $ref: "../_shared/international-text.yaml"
+                            
+                            geoPosition:
+                              $ref: "../_shared/lnglat.yaml"
+                          
+                          required:
+                            - name
+                            - geoPosition
+
+                          oneOf:
+                            - required:
+                              - stopPlace
+                            - required:
+                              - address
+                        # place
+
+                        complete:
+                          type: boolean
+                        probability:
+                          type: number
+                      
+                      required:
+                        - place
+                        - complete
+                  # placeResults
+                
+                required:
+                  - responseTimestamp
+                  - placeResults
+              # locationInformationDelivery
+
+            required:
+              - responseTimestamp
+              - locationInformationDelivery
+          # serviceRequest
+        
+        required:
+          - serviceDelivery
+      # request
+    
+    required:
+      - response
+  # ojp
+required:
+  - ojp

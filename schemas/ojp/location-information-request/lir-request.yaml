@@ -1,0 +1,96 @@
+$id: "https://opentransportdata.swiss/schemas/ojp.json"
+$schema: "http://json-schema.org/draft-07/schema#"
+title: OJP LocationInformationRequest Request
+reference: https://opentransportdata.swiss/de/cookbook/ojp2entwicklung/
+type: object
+properties:
+  ojp:
+    xmlName: OJP
+    type: object
+    properties:
+      request:
+        xmlName: OJPRequest
+        type: object
+        properties:
+          serviceRequest:
+            namespace: http://www.siri.org.uk/siri
+            type: object
+            properties:
+              requestTimestamp:
+                namespace: http://www.siri.org.uk/siri
+                type: string
+                format: date-time
+              
+              requestorRef:
+                namespace: http://www.siri.org.uk/siri
+                type: string
+              
+              locationInformationRequest:
+                xmlName: OJPLocationInformationRequest
+                type: object
+                properties:
+                  requestTimestamp:
+                    namespace: http://www.siri.org.uk/siri
+                    type: string
+                    format: date-time
+                  
+                  initialInput:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+
+                      geoRestriction:
+                        type: object
+                        properties:
+                          rectangle:
+                            type: object
+                            properties:
+                              upperLeft:
+                                $ref: "../_shared/lnglat.yaml"
+                              lowerRight:
+                                $ref: "../_shared/lnglat.yaml"
+                            required:
+                              - upperLeft
+                              - lowerRight
+                        required: 
+                          - rectangle
+
+                    oneOf:
+                      - required:
+                        - geoRestriction
+                      - required:
+                        - name
+
+                  restrictions:
+                    type: object
+                    properties:
+                      # use 'types' otherwise we cant use 'type:' which is reserved
+                      types:
+                        xmlName: Type
+                        type: array
+                        types:
+                          type: string
+
+                      numberOfResults:
+                        type: integer
+                  # restrictions
+
+                required:
+                  - requestTimestamp
+                  - initialInput
+              # locationInformationRequest
+
+            required:
+              - requestTimestamp
+              - requestorRef
+              - locationInformationRequest
+          # serviceRequest
+        required:
+          - serviceRequest
+      # request
+    required:
+      - request
+  # ojp
+required:
+  - ojp
